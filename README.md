@@ -1,9 +1,4 @@
 <head>
-    <!-- This is just a bunch of hacked together code to see if it works. -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Overlay test</title>
     <style media="screen">
       html, body{
         margin: 0;
@@ -13,9 +8,8 @@
     }
     #camera, #camera--view, #camera--sensor, #camera--output{
         position: fixed;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+        height: 50%;
+        width: 50%;
     }
     #camera--view, #camera--sensor, #camera--output{
         transform: scaleX(-1);
