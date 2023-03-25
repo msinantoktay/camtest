@@ -96,7 +96,7 @@
         <!-- Camera output -->
         <img src="//:0" alt="" id="camera--output">
         <!-- Camera trigger -->
-        <div id="camera--trigger"><span>Take a picture</span></div>
+        <div id="camera--trigger"><span>Take a picture.</span></div>
     </main>
     <!-- Reference to your JavaScript file -->
     <script>
