@@ -1,10 +1,6 @@
 
 <head>
-    <!-- This is just a bunch of hacked together code to see if it works. -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Overlay test</title>
+   
     <style media="screen">
       html, body{
         margin: 0;
@@ -16,7 +12,13 @@
         position: fixed;
         height: 200px;
         width: 200px;
+       
     }
+    #camera--output{
+         position : relative;
+         display: none;
+    }
+
     #camera--view, #camera--sensor, #camera--output{
         transform: scaleX(-1);
         filter: FlipH;
@@ -35,10 +37,11 @@
         position: absolute;
         top: 1px;
         left: 1px;
-        border-top: 4px solid #000;
-        border-left: 4px solid #000;
+        border-top: 4px solid #bc0c0c;
+        border-left: 4px solid #bc0c0c;
         margin-left: 33px;
         margin-top: 30px;
+        z-index: 10;
     }
     #camera--trigger:after {
         display: block;
@@ -48,10 +51,11 @@
         position: absolute;
         top: 1px;
         right: 1px;
-        border-top: 4px solid #000;
-        border-right: 4px solid #000;
+        border-top: 4px solid #bc0c0c;
+        border-right: 4px solid #bc0c0c;
         margin-right: 50px;
         margin-top: 30px;
+        z-index: 10;
     }
     #camera--trigger span:before {
         display: block;
@@ -61,11 +65,12 @@
         position: absolute;
         bottom: 1px;
         left: 1px;
-        border-bottom: 4px solid #000;
-        border-left: 4px solid #000;
+        border-bottom: 4px solid #bc0c0c;
+        border-left: 4px solid #bc0c0c;
         margin-left: 33px;
         margin-bottom: 20px;
         margin-right: 40px;
+        z-index: 10;
     }
     #camera--trigger span:after {
         display: block;
@@ -75,22 +80,18 @@
         position: absolute;
         bottom: 1px;
         right: 1px;
-        border-bottom: 4px solid #000;
-        border-right: 4px solid #000;
+        border-bottom: 4px solid #bc0c0c;
+        border-right: 4px solid #bc0c0c;
         margin-left: 33px;
         margin-bottom: 20px;
         margin-right: 50px;
+        z-index: 10;
     }
 
     .taken{
-        height: 100px!important;
-        width: 100px!important;
         transition: all 0.5s ease-in;
-        border: solid 3px white;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-        top: 20px;
-        right: 20px;
-        z-index: 2;
+        height: 150px !important;
+        margin-top: 6px;
     }
     </style>
 </head>
@@ -102,9 +103,13 @@
         <!-- Camera view -->
         <video id="camera--view" autoplay playsinline></video>
         <!-- Camera output -->
-        <img src="//:0" alt="" id="camera--output">
         <!-- Camera trigger -->
-        <div id="camera--trigger"><span>Take a picture</span></div>
+        <div id="camera--trigger"><span>Take a picture</span>
+                <img src="//:0" alt="" id="camera--output">
+
+        </div>
+
+
     </main>
     <!-- Reference to your JavaScript file -->
     <script>
@@ -123,7 +128,7 @@
         function cameraStart() {
             const supported = 'mediaDevices' in navigator;
             if (!supported) {
-                alert('not supported')
+                alert('device not supported')
                 return;
             }
             navigator.mediaDevices
@@ -148,7 +153,9 @@
 
             cameraView.srcObject.getVideoTracks().forEach(track => track.stop());
             cameraSensor.style.display = 'none';
-            cameraView.style.display = 'none';
+            //cameraView.style.display = 'none';
+            cameraOutput.style.display = 'block';
+
         };
         // Start the video stream when the window loads
         window.addEventListener("load", cameraStart, false);
