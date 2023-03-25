@@ -36,7 +36,7 @@
             guidelines.style.width = guidelinesWidth + 'px';
             guidelines.style.height = guidelinesHeight + 'px';
             guidelines.style.left = (videoRect.left + (videoRect.width - guidelinesWidth) / 2) + 'px';
-            guidelines.style.top =  (videoRect.top + (videoRect.width - guidelinesWidth) / 2)) + 'px';
+            guidelines.style.top =  (videoRect.top + (videoRect.width - guidelinesWidth) / 2) + 'px';
 
         }
 
