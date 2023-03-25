@@ -1,4 +1,10 @@
+
 <head>
+    <!-- This is just a bunch of hacked together code to see if it works. -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Overlay test</title>
     <style media="screen">
       html, body{
         margin: 0;
@@ -8,8 +14,8 @@
     }
     #camera, #camera--view, #camera--sensor, #camera--output{
         position: fixed;
-        height: 50%;
-        width: 50%;
+        height: 200px;
+        width: 200px;
     }
     #camera--view, #camera--sensor, #camera--output{
         transform: scaleX(-1);
@@ -32,7 +38,7 @@
         border-top: 4px solid #000;
         border-left: 4px solid #000;
         margin-left: 33px;
-        margin-bottom: 20px;
+        margin-top: 30px;
     }
     #camera--trigger:after {
         display: block;
@@ -44,8 +50,8 @@
         right: 1px;
         border-top: 4px solid #000;
         border-right: 4px solid #000;
-        margin-left: 33px;
-        margin-bottom: 20px;
+        margin-right: 50px;
+        margin-top: 30px;
     }
     #camera--trigger span:before {
         display: block;
@@ -57,8 +63,9 @@
         left: 1px;
         border-bottom: 4px solid #000;
         border-left: 4px solid #000;
-            margin-left: 33px;
-    margin-bottom: 20px;
+        margin-left: 33px;
+        margin-bottom: 20px;
+        margin-right: 40px;
     }
     #camera--trigger span:after {
         display: block;
@@ -72,6 +79,7 @@
         border-right: 4px solid #000;
         margin-left: 33px;
         margin-bottom: 20px;
+        margin-right: 50px;
     }
 
     .taken{
@@ -96,12 +104,16 @@
         <!-- Camera output -->
         <img src="//:0" alt="" id="camera--output">
         <!-- Camera trigger -->
-        <div id="camera--trigger"><span>Take a picture.</span></div>
+        <div id="camera--trigger"><span>Take a picture</span></div>
     </main>
     <!-- Reference to your JavaScript file -->
     <script>
         // Set constraints for the video stream
-        var constraints = { video: { facingMode: "user" }, audio: false };
+        //var constraints = { video: { facingMode: "user" }, audio: false };
+        //var constraints = { video: { facingMode: "user" }, audio: false };
+        
+        var constraints = { video: {  }, audio: false };
+        
         // Define constants
         const cameraView = document.querySelector("#camera--view"),
             cameraOutput = document.querySelector("#camera--output"),
@@ -141,4 +153,3 @@
         // Start the video stream when the window loads
         window.addEventListener("load", cameraStart, false);
     </script>
-</body>
