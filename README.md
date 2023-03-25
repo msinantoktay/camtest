@@ -1,5 +1,3 @@
-<!doctype html>
-<html lang=”en”>
 <head>
     <!-- This is just a bunch of hacked together code to see if it works. -->
     <meta charset="utf-8">
@@ -150,4 +148,3 @@
         window.addEventListener("load", cameraStart, false);
     </script>
 </body>
-</html>
