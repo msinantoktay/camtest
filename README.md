@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
+
 <head>
-    <title>Take a photo of A4 document</title>
 </head>
 <body>
-    <h1>Take a photo of A4 document</h1>
+    <h1>Photo of A4 doc</h1>
     <div id="camera" style="position: relative;">
         <video id="video" width="640" height="480" autoplay></video>
         <canvas id="canvas" width="640" height="480"></canvas>
@@ -52,4 +50,4 @@
         });
     </script>
 </body>
-</html>
+
