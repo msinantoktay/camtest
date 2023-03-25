@@ -1,54 +1,93 @@
+<style media="screen">
+  html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+#camera, #camera--view, #camera--sensor, #camera--output{
+    position: fixed;
+    height: 200px;
+    width: 200px;
+   
+}
+#camera--output{
+     position : relative;
+     display: none;
+}
 
-<head>
-</head>
-<body>
-    <h1>Photo of A4 doc</h1>
-    <div id="camera" style="position: relative;">
-        <video id="video" width="640" height="480" autoplay></video>
-        <canvas id="canvas" width="640" height="480"></canvas>
-        <div id="guidelines" style="position: absolute; border: 2px solid red;"></div>
-    </div>
-    <button id="snap">Capture</button>
+#camera--view, #camera--sensor, #camera--output{
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+#camera--trigger {
+    display: none;
+    position: relative;
+    width: 99%;
+    height: 99%;
+}
+#camera--trigger:before {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-top: 4px solid #bc0c0c;
+    border-left: 4px solid #bc0c0c;
+    margin-left: 33px;
+    margin-top: 30px;
+    z-index: 10;
+}
+#camera--trigger:after {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    border-top: 4px solid #bc0c0c;
+    border-right: 4px solid #bc0c0c;
+    margin-right: 50px;
+    margin-top: 30px;
+    z-index: 10;
+}
+#camera--trigger span:before {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    border-bottom: 4px solid #bc0c0c;
+    border-left: 4px solid #bc0c0c;
+    margin-left: 33px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    z-index: 10;
+}
+#camera--trigger span:after {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    border-bottom: 4px solid #bc0c0c;
+    border-right: 4px solid #bc0c0c;
+    margin-left: 33px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    z-index: 10;
+}
 
-    <script>
-        // Access the camera
-        navigator.mediaDevices.getUserMedia({video: true})
-            .then(function(stream) {
-                var video = document.querySelector('#video');
-                video.srcObject = stream;
-                video.play();
-                setGuidelines();
-            })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
-            });
-
-        // Set the guidelines
-        function setGuidelines() {
-            var video = document.getElementById('video');
-            var videoRect = video.getBoundingClientRect();
-            var aspectRatio = 210 / 297; // A4 paper aspect ratio
-
-            // Set the guidelines size and position
-            var guidelines = document.getElementById('guidelines');
-            var guidelinesWidth = videoRect.width * 0.50; // 90% of video width
-            var guidelinesHeight = videoRect.width * 0.50;
-            guidelines.style.width = guidelinesWidth + 'px';
-            guidelines.style.height = guidelinesHeight + 'px';
-            guidelines.style.left = (videoRect.left + (videoRect.width - guidelinesWidth) / 2) + 'px';
-            guidelines.style.top =  (videoRect.top + (videoRect.width - guidelinesWidth) / 2) + 'px';
-
-        }
-
-        // Capture the image
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        var video = document.getElementById('video');
-        var snap = document.getElementById('snap');
-
-        snap.addEventListener('click', function() {
-            context.drawImage(video, 0, 0, 640, 480);
-        });
-    </script>
-</body>
-
+.taken{
+    transition: all 0.5s ease-in;
+    height: 150px !important;
+    margin-top: 6px;
+}
+</style>
